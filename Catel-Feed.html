@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosa-Saree - CG CHINHARI</title>
+    <link rel="stylesheet" href="style.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
+    <style>
+.navbar-nav {
+  backdrop-filter: blur(5px);
+  background-color: rgba(50, 56, 22, 0.5); /* add a semi-transparent white background to increase the effect */
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  z-index: 9999;
+}
+
+
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 1rem;
+  position: relative;
+}
+
+nav ul li a {
+  color: #b56d6d;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+nav ul li:hover a {
+  text-decoration: none;
+  border-bottom: 2px solid white;
+  color: #fff;
+}
+
+nav ul li a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+nav ul li:hover > ul {
+  display: block;
+  animation: slideInLeft 0.5s forwards;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -50%;
+  width: 200px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 2;
+  background-color: #333;
+}
+
+nav ul li ul li {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li ul li a {
+  color: #080000;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+nav ul li ul li:hover a {
+  color: #000000;
+  background-color: #555;
+}
+
+@media only screen and (max-width: 768px) {
+  nav ul li {
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  nav ul li ul {
+    position: static;
+    display: none;
+  }
+
+  nav ul li:hover > ul {
+    display: block;
+    animation: none;
+  }
+
+  nav ul li ul li {
+    display: block;
+    margin-left: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -50%;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 768px) {
+  nav {
+    font-size: 5rem; /* adjust the font size as per your requirements */
+  }
+}
+
+    .card {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  margin: 50px auto;
+  perspective: 1000px;  
+}
+
+
+.card:hover .card-img {
+  transform: rotateY(-180deg);
+}
+
+.card:hover .card-body {
+  transform: rotateY(0deg);
+}
+
+.card-img, .card-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+}
+
+.card-img {
+  transform: rotateY(0deg);
+  transition: transform 0.6s ease;
+  z-index: 2;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  transform: rotateY(180deg);
+  transition: transform 0.6s ease;
+  z-index: 1;
+  background: transparent;
+}
+
+.card-title, .card-description {
+  font-size: 20px;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.buy-now {
+  display: block;
+  margin: 0 auto;
+  background-color: #ffffff00;
+  color: #000;
+  border: 2px solid #000;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.buy-now:hover {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.card:hover .card-title, .card:hover .card-description, .card:hover .buy-now {
+  opacity: 1;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5);
+}
+
+/* default style for all screen sizes */
+.item {
+  width: 25%;
+  display: inline-block;
+}
+
+/* media query for screens larger than 768px */
+@media (min-width: 768px) {
+  .item {
+    width: 25%;
+    display: inline-block;
+  }
+  
+  .row {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .item:nth-child(4n+1) {
+    clear: both;
+  }
+}
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: rgb(34, 60, 68);
+  color: white;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+
+
+}
+#img1{
+  width: auto;
+  height: auto;
+}
+
+#img1{
+  width: auto;
+  height: auto;
+}
+
+#btncm{
+  font-size:large;
+}
+</style>
+</head>
+<body>
+    <br>
+    <br>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-size-6%"
+      style="font-size: 280%; padding-bottom: 1%; padding-top: 1%;">
+      <a href="index.html"><img id="img1" src="img/logo/CHL.png"></a></div>
+      <div class="container-fluid">
+        <button class="navbar-toggler text-white" style="font-size: larger;" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon text-white color-white"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item px-5">
+              <a class="nav-link active text-white" aria-current="page" href="index.html">Home</a>
+            </li>
+            
+            <li class="navbar-item dropdown nav-item px-5">
+              <a href="#"  class="nav-link active text-white" aria-current="page" href="#">Products</a>
+              <ul class="submenu">
+                <li class="submenu-item nav-link active"><a style="text-decoration: none;" href="Kosa-Saree.html">Kosa-Saree</a></li>
+                <li class="submenu-item nav-link active"><a style="text-decoration: none;" href="Catel-Feed.html">Catel Feed</a></li>
+              </ul>
+            </li>
+  
+            <li class="nav-item px-5">
+              <a class="nav-link active text-white" aria-current="page" href="About.html">About</a>
+            </li>
+            <li class="nav-item px-5">
+              <a class="nav-link active text-white" aria-current="page" href="contact-us.html">Contact Us</a>
+            </li>
+            <li class="nav-item px-5">
+              <a class="nav-link active text-white" aria-current="page" href="#" style="visibility: hidden;">Admin</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+      
+      <!-- ======================================== 
+            Our SS1 Start  
+      ========================================  -->
+      <section class="section-services1">
+  
+        <div class="ss1">
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="img/organic food and fertilizer/Catel Feed/Desi Til.jpeg" alt="Avatar" style="width:300px;height:300px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <h1>Desi Till</h1> 
+                    <p>Get quality desi till from us click on the button below Inquir Now.</p> 
+                    <button id="btncm"><a href="Feeds/till.html" style="text-decoration: none;">Read More</a></button>
+                  </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="img/organic food and fertilizer/Catel Feed/Desi Gud.jpeg" alt="Avatar" style="width:300px;height:300px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <h1>Desi Gud</h1> 
+                    <p>Get quality desi gud from us click on the button below Inquir Now.</p> 
+                    <button id="btncm"><a href="Feeds/gud.html" style="text-decoration: none;">Read More</a></button>
+                  </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="img/organic food and fertilizer/Catel Feed/Haldi.jpeg" alt="Avatar" style="width:300px;height:300px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <h1>Desi Haldi</h1> 
+                    <p>Get quality desi Haldi from us click on the button below Inquir Now.</p> 
+                    <button id="btncm"><a href="Feeds/haldi.html" style="text-decoration: none;">Read More</a></button>
+                  </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img src="img/organic food and fertilizer/Catel Feed/Ragi ( Millet ).jpeg" alt="Avatar" style="width:300px;height:300px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <h1>Desi Ragi</h1> 
+                    <p>Get quality desi ragi (Millet) from us click on the button below Inquir Now.</p> 
+                    <button id="btncm"><a href="Feeds/ragi.html" style="text-decoration: none;">Read More</a></button>
+                  </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="img/organic food and fertilizer/Catel Feed/Rakhiya Bari.jpeg" alt="Avatar" style="width:300px;height:300px;">
+                </div>
+                <div class="flip-card-back">
+                  <h1>Desi Rakhiya Bari</h1> 
+                  <p>Get quality desi Rakhiya Bari from us click on the button below Inquir Now.</p> 
+                  <button id="btncm"><a href="Feeds/rakhiyabari.html" style="text-decoration: none;">Read More</a></button>
+                </div>
+              </div>
+          </div>
+
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img src="img/organic food and fertilizer/Catel Feed/Red Rice.jpeg" alt="Avatar" style="width:300px;height:300px;">
+              </div>
+              <div class="flip-card-back">
+                <h1>Red Rice</h1> 
+                <p>Get quality desi Red Rice from us click on the button below Inquir Now.</p> 
+                <button id="btncm"><a href="Feeds/sfwr.html" style="text-decoration: none;">Read More</a></button>
+              </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img src="img/organic food and fertilizer/Catel Feed/Sugar Free Black Rice.jpeg" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <h1>Sugar Free Black Rice</h1> 
+              <p>Get quality Sugar Free Black Rice from us click on the button below Inquir Now.</p> 
+              <button id="btncm"><a href="Feeds/sfbr.html" style="text-decoration: none;">Read More</a></button>
+            </div>
+          </div>
+      </div>
+
+
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img/organic food and fertilizer/Catel Feed/Sugar Free White Rice.jpeg" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <h1>Sugar Free White Rice</h1> 
+            <p>Get quality Sugar Free White Rice from us click on the button below Inquir Now.</p> 
+            <button id="btncm"><a href="Feeds/">Read More</a></button>
+          </div>
+        </div>
+    </div>
+
+
+
+          </div>        
+      </section>
+    <footer>
+      <div class="footer-bottom">
+        <p>copyright &copy;2023 Designed by<a href="#" style="text-decoration: none; color: white;"> &nbsp;<span>Krishna Ji</span></a></p>
+      </div>
+    </footer>
+    <!-- ======================================== 
+            Our JavaScript Section Start  
+      ========================================  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>  
+</body>
+<script>
+    const card = document.querySelector('.card');
+    card.addEventListener('click', function() {
+      card.classList.toggle('flipped');
+    });
+    </script>
+</html>

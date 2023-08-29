@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CG CHINHARI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
+    <style>
+
+.star {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+
+@keyframes glow {
+  from {
+    text-shadow: 0px 0px 20px #4edb9e;
+  }
+
+  to {
+    text-shadow: 0px 0px 30px #10382d;
+  }
+}
+
+
+
+.navbar-nav {
+  backdrop-filter: blur(5px);
+  background-color: rgba(50, 56, 22, 0.5); /* add a semi-transparent white background to increase the effect */
+}
+
+nav {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  z-index: 9999;
+}
+
+
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 1rem;
+  position: relative;
+}
+
+nav ul li a {
+  color: #b56d6d;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+nav ul li:hover a {
+  text-decoration: none;
+  border-bottom: 2px solid white;
+  color: #fff;
+}
+
+nav ul li a:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+nav ul li a:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+nav ul li:hover > ul {
+  display: block;
+  animation: slideInLeft 0.5s forwards;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -50%;
+  width: 200px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #333;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 2;
+  background-color: #333;
+}
+
+nav ul li ul li {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+nav ul li ul li:hover a {
+  color: #fff;
+  background-color: #555;
+}
+
+@media only screen and (max-width: 768px) {
+  nav ul li {
+    margin-left: 0;
+  }
+
+  nav ul li a {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  nav ul li ul {
+    position: static;
+    display: none;
+  }
+
+  nav ul li:hover > ul {
+    display: block;
+    animation: none;
+  }
+
+  nav ul li ul li {
+    display: block;
+    margin-left: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    right: -200px;
+    opacity: 0;
+  }
+  to {
+    right: -50%;
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 768px) {
+  nav {
+    font-size: 5rem; /* adjust the font size as per your requirements */
+  }
+}
+
+    
+
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+#img1{
+  width: auto;
+  height: auto;
+}
+
+</style>
+
+
+</head>
+
+<body>
+  <br>
+  <br>
+  
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-size-6%"
+  style="font-size: 280%; padding-bottom: 1%; padding-top: 1%;">
+  <a href="index.html"><img id="img1" src="img/logo/CHL.png"></a></div>
+    <div class="container-fluid">
+      <button class="navbar-toggler text-white" style="font-size: larger;" type="button"
+        data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon text-white color-white"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item px-5">
+            <a class="nav-link active text-white" aria-current="page" href="index.html">Home</a>
+          </li>
+          
+          <li class="navbar-item dropdown nav-item px-5">
+            <a href="#"  class="nav-link active text-white" aria-current="page" href="#">Products</a>
+            <ul class="submenu">
+              <li class="submenu-item nav-link active"><a style="text-decoration: none;" href="Kosa-Saree.html">Kosa-Saree</a></li>
+              <li class="submenu-item nav-link active"><a style="text-decoration: none;" href="Catel-Feed.html">Catel Feed</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item px-5">
+            <a class="nav-link active text-white" aria-current="page" href="About.html">About</a>
+          </li>
+          <li class="nav-item px-5">
+            <a class="nav-link active text-white" aria-current="page" href="contact-us.html">Contact Us</a>
+          </li>
+          <li class="nav-item px-5">
+            <a class="nav-link active text-white" aria-current="page" href="#" style="visibility: hidden;">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    
+    <!-- ======================================== 
+          Our SS1 Start  
+    ========================================  -->
+    <section class="section-services1">
+
+      <div class="ss1">
+        <h1>New Chnages are on the Way to this file</h1>    
+      </div>        
+      <h2>We Need a Job ASAP</h2>    
+
+    </section>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>copyright &copy;2023 Designed by<a href="#" style="text-decoration: none; color: white;"> &nbsp;<span>Krishna Ji</span></a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+</body>
+
+<script>
+const card = document.querySelector('.card');
+card.addEventListener('click', function() {
+  card.classList.toggle('flipped');
+});
+</script>
+
+</html>
